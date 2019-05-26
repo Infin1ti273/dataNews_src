@@ -1,0 +1,7 @@
+{
+  "name": "DataNewsProject",
+  "version": "1.0.0",
+  "dependencies": {
+    "csv2json": "latest"
+  }
+}
