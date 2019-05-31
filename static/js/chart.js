@@ -21,10 +21,10 @@ let myChart = echarts.init(document.getElementById('main'));
         };
         // Schema:
         let schema = [
-            {name: 'Movie type', index: 3, text: 'type', unit: ''},
-            {name: 'Movie number', index: 2, text: 'movie', unit: ''},
-            {name: 'Ratings', index: 1, text: 'rate', unit: ''},
-            {name: 'Population', index: 0, text: 'population', unit: ''},
+            {name: 'Movie type', index: 0, text: 'type', unit: ''},
+            {name: 'Movie number', index: 1, text: 'movie number', unit: ''},
+            {name: 'Ratings', index: 2, text: 'ratings', unit: ''},
+            {name: 'Population', index: 3, text: 'population', unit: ''},
         ];
 
         let option = {
@@ -194,9 +194,10 @@ let myChart = echarts.init(document.getElementById('main'));
                             borderWidth: 1,
                             formatter: function (obj) {
                                 let value = obj.value;
-                                return schema[1].text + '：' + value[1] + schema[1].unit + '<br>'
-                                    + schema[0].text + '：' + value[0] + schema[0].unit + '<br>'
-                                    + schema[2].text + '：' + value[2] + schema[2].unit + '<br>';
+                                return schema[0].text + '：' + value[3] + schema[3].unit + '<br>'
+                                    + schema[1].text + '：' + value[2] + schema[2].unit + '<br>'
+                                    + schema[2].text + '：' + value[1] + schema[1].unit + '<br>'
+                                + schema[3].text + '：' + value[0] + schema[0].unit + '<br>';
                             }
                         },
                 series: [
