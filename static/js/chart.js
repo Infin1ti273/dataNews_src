@@ -7,7 +7,7 @@ let myChart = echarts.init(document.getElementById('main'));
         // ⚪的样式
         let itemStyle = {
             normal: {
-                opacity: 1,
+                opacity: 0.9,
                 shadowBlur: 10,
                 shadowOffsetX: 0,
                 shadowOffsetY: 0,
@@ -38,7 +38,7 @@ let myChart = echarts.init(document.getElementById('main'));
                     right: null,
                     top: null,
                     bottom: 20,
-                    width: 600,
+                    width: 900,
                     height: 10,
                     label: {
                         normal: {
@@ -52,7 +52,7 @@ let myChart = echarts.init(document.getElementById('main'));
                             }
                         }
                     },
-                    symbol: 'diamond',
+                    symbol: 'none',
                     lineStyle: {
                         color: '#555'
                     },
@@ -75,7 +75,7 @@ let myChart = echarts.init(document.getElementById('main'));
                     },
                     data: []
                 },
-                backgroundColor: '#404a59',
+                backgroundColor: '#b4d2d8',
                 title: [{
                     text: data.year[0],
                     textAlign: 'center',
@@ -95,18 +95,6 @@ let myChart = echarts.init(document.getElementById('main'));
                         fontSize: 20
                     }
                 }],
-                tooltip: {
-                    padding: 5,
-                    backgroundColor: '#222',
-                    borderColor: '#777',
-                    borderWidth: 1,
-                    formatter: function (obj) {
-                        let value = obj.value;
-                        return schema[1].text + '：' + value[1] + schema[1].unit + '<br>'
-                            + schema[0].text + '：' + value[0] + schema[0].unit + '<br>'
-                            + schema[2].text + '：' + value[2] + schema[2].unit + '<br>';
-                    }
-                },
                 grid: {
                     top: 100,
                     containLabel: true,
@@ -114,6 +102,7 @@ let myChart = echarts.init(document.getElementById('main'));
                     right: 30
                 },
                 xAxis: {
+                    right: 100,
                     type: 'value',
                     name: 'population',
                     max: 10000,
@@ -167,7 +156,26 @@ let myChart = echarts.init(document.getElementById('main'));
                         },
                         inRange: {
                             color: (function () {
-                                let colors = ['#bcd3bb', '#e88f70', '#edc1a5', '#9dc5c8', '#e1e8c8', '#7b7c68', '#e5b5b5', '#f0b489', '#928ea8', '#bda29a', '#bcd3bb', '#e88f70', '#edc1a5', '#9dc5c8', '#e1e8c8', '#7b7c68', '#e5b5b5', '#f0b489',];
+                                let colors = [
+                                    '#aca0d7',
+                                    '#ecbbda',
+                                    '#e6e983',
+                                    '#e88f70',
+                                    '#af87d6',
+                                    '#e78187',
+                                    '#cfa569',
+                                    '#da8f2e',
+                                    '#718ca3',
+                                    '#dad8d1',
+                                    '#92d5c5',
+                                    '#5e89ec',
+                                    '#edc1a5',
+                                    '#c45b5c',
+                                    '#d96ecb',
+                                    '#b250d6',
+                                    '#525051',
+                                    '#c29166',
+                                ];
                                 return colors.concat(colors);
                             })()
                         },
@@ -176,18 +184,34 @@ let myChart = echarts.init(document.getElementById('main'));
                         orient: 'vertical'
                     }
                 ],
+                tooltip: {
+                            padding: 5,
+                            backgroundColor: '#222',
+                            borderColor: '#777',
+                            borderWidth: 1,
+                            formatter: function (obj) {
+                                let value = obj.value;
+                                return schema[1].text + '：' + value[1] + schema[1].unit + '<br>'
+                                    + schema[0].text + '：' + value[0] + schema[0].unit + '<br>'
+                                    + schema[2].text + '：' + value[2] + schema[2].unit + '<br>';
+                            }
+                        },
                 series: [
                     {
                         type: 'scatter',
                         itemStyle: itemStyle,
-                        data: data.series[0],
+                        data: {
+                            value: data.series[0],
+                        },
                         symbolSize: (val) => {
                             return sizeFunction(val[2]);
-                    }
+                        },
+                        animationThreshold: 10000,
+                        progressiveThreshold: 10000,
                     }
                 ],
                 animationDurationUpdate: 1000,
-                animationEasingUpdate: 'quinticInOut'
+                animationEasingUpdate: 'cubicInOut'
             },
             options: []
         };
@@ -216,7 +240,7 @@ let myChart = echarts.init(document.getElementById('main'));
                           if (data.series[n][i][0] > max)
                               max = data.series[n][i][0];
                       }
-                      return max;
+                      return max * 1.2 - ((max * 1.2) % 100);
                     }
                   },
             });
