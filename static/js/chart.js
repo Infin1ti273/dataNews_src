@@ -17,7 +17,7 @@ let myChart = echarts.init(document.getElementById('main'));
 
         let sizeFunction = (x) => {
             let y = Math.sqrt(x / 5e8) + 0.1;
-            return x/5;
+            return x/20 + 5;
         };
         // Schema:
         let schema = [
@@ -41,6 +41,8 @@ let myChart = echarts.init(document.getElementById('main'));
                     width: 900,
                     height: 10,
                     label: {
+                        position: 'top',
+                        rotate: "90",
                         normal: {
                             textStyle: {
                                 color: '#999'
@@ -75,7 +77,7 @@ let myChart = echarts.init(document.getElementById('main'));
                     },
                     data: []
                 },
-                backgroundColor: '#2d3540',
+                backgroundColor: '#333c49',
                 title: [{
                     text: data.year[0],
                     textAlign: 'center',
