@@ -75,7 +75,7 @@ let myChart = echarts.init(document.getElementById('main'));
                     },
                     data: []
                 },
-                backgroundColor: '#b4d2d8',
+                backgroundColor: '#2d3540',
                 title: [{
                     text: data.year[0],
                     textAlign: 'center',
