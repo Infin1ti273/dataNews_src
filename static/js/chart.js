@@ -21,7 +21,8 @@ let myChart = echarts.init(document.getElementById('main'));
         };
         // Schema:
         let schema = [
-            {name: 'Movie', index: 2, text: 'movie', unit: ''},
+            {name: 'Movie type', index: 3, text: 'type', unit: ''},
+            {name: 'Movie number', index: 2, text: 'movie', unit: ''},
             {name: 'Ratings', index: 1, text: 'rate', unit: ''},
             {name: 'Population', index: 0, text: 'population', unit: ''},
         ];
@@ -127,7 +128,7 @@ let myChart = echarts.init(document.getElementById('main'));
                 },
                 yAxis: {
                     type: 'value',
-                    name: 'rate',
+                    name: 'ratings',
                     max: 5,
                     nameTextStyle: {
                         color: '#ccc',
